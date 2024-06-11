@@ -1,4 +1,4 @@
-import { createMessage } from "./messageService.js";
+import { createMessage, deleteMessage, deleteMessagebyid, getMessage } from "./messageService.js";
 
 
 
@@ -11,5 +11,33 @@ const CreateMessage = async (req, res, next) => {
   }
 };
 
+const GetMessage = async (req, res, next) => {
+  try {
+    const data = await getMessage();
+    return res.status(200).json({message: "All messages", msg: data});
+  } catch (err) {
+    next(err)
+  }
+};
 
-export {CreateMessage}
+
+const DeleteAllMessage = async (req, res, next) => {
+  try {
+    const data = await deleteMessage();
+    return res.status(200).json({message: "All messages deleted", msg: data});
+  } catch (err) {
+    next(err)
+  }
+}
+
+
+const DeleteAllMessageById = async (req, res, next) => {
+  try {
+    const data = await deleteMessagebyid(req.params.id);
+    return res.status(200).json({message: "Deleted with id message", msg: data});
+  } catch (err) {
+    next(err)
+  }
+}
+
+export {CreateMessage, GetMessage, DeleteAllMessage, DeleteAllMessageById}

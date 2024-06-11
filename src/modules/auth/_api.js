@@ -10,4 +10,5 @@ authRouter.post("/admin/auth/signup", validateMiddleware(registerUsersSchema), P
 authRouter.post("/admin/auth/signin", validateMiddleware(loginUsersSchema), PostLoginAdmin);
 authRouter.post("/user/auth/signin", validateMiddleware(loginUsersSchema), PostLoginUser);
 
+
 export default authRouter;

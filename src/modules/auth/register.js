@@ -20,4 +20,6 @@ const registerServices = async (data, isAdmin = false) => {
     return {access_token, refresh_token, user_id: newUser.id};
 }
 
+
+
 export default registerServices;
